@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+  <contextName>integration-test</contextName>
+  <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder>
+      <pattern>[%level] %logger{0}: %message%n</pattern>
+    </encoder>
+  </appender>
+
+
+  <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+    <File>junit.log</File>
+
+    <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+      <FileNamePattern>junit.log.%d{yyyy-MM-dd}
+      </FileNamePattern>
+      <maxHistory>7</maxHistory>
+    </rollingPolicy>
+
+    <encoder>
+      <pattern>%date [%level] %logger{0}: %message%n</pattern>
+    </encoder>
+  </appender>
+
+
+  <root level="WARN">
+    <appender-ref ref="STDOUT" />
+    <appender-ref ref="FILE" />
+  </root>
+
+  <logger name="com.goeckeler" level="DEBUG" />
+
+  <logger name="org.springframework" level="WARN" />
+  <logger name="org.hibernate" level="WARN" />
+  <logger name="org.hibernate.SQL" level="WARN" />
+  <logger name="org.hibernate.tool.hbm2ddl" level="WARN" />
+  <logger name="org.quartz" level="WARN" />
+</configuration>
