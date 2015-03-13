@@ -27,4 +27,4 @@ Spring offers lot of modules supporting you if you have simple MVC applications,
 
 Spring Boot offers us a fast start into Spring, with starter modules that handle all the complicated dependency setup and blends in the set of ibraries that match each other.
 
-On top it lets us run our application in a container, thus is the top choice for micro services, and adds the spice that make you happy once the application is deployed and goes live. This spice are health indicators, inside details, cpu usuage and more.
+On top it lets us run our application in a container, thus is the top choice for micro services, and adds the spice that make you happy once the application is deployed and goes live. This spice are health indicators, inside details, cpu usuage and more. By the way, you can still create a war file if you want.
