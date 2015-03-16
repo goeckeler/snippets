@@ -13,7 +13,7 @@ Introduction to Spring Boot using Spring of course. Starting with a simple appli
 +  write an integration test
 +  monitor the application
 
-This is supposed to demonstrate some of the highlights of Spring and how easy it is to get going with Spring Boot, and what you get on top.
+This is supposed to demonstrate some of the highlights of Spring and how easy it is to get going with Spring Boot, and what you get on top. If you want get going yourself, visit [http://start.spring.io/](http://start.spring.io/) to generate your initial build script.
 
 ## Core Spring
 
