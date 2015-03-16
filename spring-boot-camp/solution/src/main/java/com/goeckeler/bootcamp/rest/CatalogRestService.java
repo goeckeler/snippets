@@ -9,10 +9,10 @@ import com.goeckeler.bootcamp.domain.object.Products;
 
 @RestController
 @RequestMapping(value = "/catalog")
-public class CatalogRestService {
-	@RequestMapping(method = RequestMethod.GET, value = "/search")
-	public Products search(
-			@RequestParam(value = "artist-name", required = false) String artistName) {
-		return new Products();
-	}
+public class CatalogRestService
+{
+  @RequestMapping(method = RequestMethod.GET, value = "/search")
+  public Products search(@RequestParam(value = "artist-name", required = false) String artistName) {
+    return new Products();
+  }
 }
