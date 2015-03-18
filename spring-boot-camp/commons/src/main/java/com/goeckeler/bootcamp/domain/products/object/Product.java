@@ -17,7 +17,7 @@ public class Product  implements Comparable<Product>
   @GeneratedValue
   private Long id;
 
-  @Column
+  @Column(length = 80)
   private String name;
 
   public Product() {
