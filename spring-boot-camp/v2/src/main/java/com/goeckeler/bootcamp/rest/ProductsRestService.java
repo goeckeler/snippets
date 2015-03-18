@@ -1,5 +1,7 @@
 package com.goeckeler.bootcamp.rest;
 
+import java.util.Optional;
+
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -19,7 +21,7 @@ public class ProductsRestService
   }
   
   @RequestMapping(method = RequestMethod.GET, value="/{id}")
-  public Product findById(@PathVariable Long id) {
-    return new Product();
+  public Optional<Product> findById(@PathVariable Long id) {
+    return Optional.ofNullable(null);
   }
 }
