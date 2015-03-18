@@ -26,6 +26,13 @@
     <!-- Compile & Build                                     -->
     <!-- =================================================== -->
 
+    <!-- Bootcamp Common Data Structures -->
+    <dependency>
+      <groupId>com.goeckeler</groupId>
+      <artifactId>bootcamp-commons</artifactId>
+      <version>${project.version}</version>
+    </dependency>
+
     <!-- Offer REST services -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

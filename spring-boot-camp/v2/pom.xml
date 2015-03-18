@@ -22,6 +22,20 @@
   </properties>
 
   <dependencies>
+    <!-- Bootcamp Common Data Structures -->
+    <dependency>
+      <groupId>com.goeckeler</groupId>
+      <artifactId>bootcamp-commons</artifactId>
+      <version>1.0.0</version>
+    </dependency>
+  
+    <!-- Use in memory database, must be referenced explicitly to be activated -->
+    <!-- You can add more database drivers and then select which one you want. -->
+    <dependency>
+      <groupId>com.h2database</groupId>
+      <artifactId>h2</artifactId>
+    </dependency>
+  
     <!-- Offer REST services -->
     <dependency>
       <groupId>org.springframework.boot</groupId>
