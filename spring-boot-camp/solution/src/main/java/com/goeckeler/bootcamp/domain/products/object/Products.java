@@ -1,4 +1,4 @@
-package com.goeckeler.bootcamp.domain.object;
+package com.goeckeler.bootcamp.domain.products.object;
 
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 
