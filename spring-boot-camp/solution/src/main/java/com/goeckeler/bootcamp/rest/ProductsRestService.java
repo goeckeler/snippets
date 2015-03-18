@@ -1,7 +1,6 @@
 package com.goeckeler.bootcamp.rest;
 
-import javax.websocket.server.PathParam;
-
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -20,7 +19,7 @@ public class ProductsRestService
   }
   
   @RequestMapping(method = RequestMethod.GET, value="/{id}")
-  public Product findById(@PathParam("id") Long identifier) {
+  public Product findById(@PathVariable Long id) {
     return new Product();
   }
 }
