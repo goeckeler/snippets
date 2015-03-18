@@ -28,17 +28,21 @@ public class Product  implements Comparable<Product>
     this.name = name;
   }
 
-  @Override
-  public int hashCode() {
-    return toString().hashCode();
-  }
-
   public String getName() {
     return defaultIfBlank(name, "(n/a)");
   }
 
+  public Long getId() {
+    return id;
+  }
+  
   public void setName(final String name) {
     this.name = name;
+  }
+
+  @Override
+  public int hashCode() {
+    return toString().hashCode();
   }
 
   @Override
