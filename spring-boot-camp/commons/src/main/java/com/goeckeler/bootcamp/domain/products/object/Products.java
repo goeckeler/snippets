@@ -1,12 +1,26 @@
 package com.goeckeler.bootcamp.domain.products.object;
 
-import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
+import java.util.Set;
 
+import javax.persistence.Embeddable;
+import javax.persistence.OneToMany;
+
+import com.goeckeler.bootcamp.common.object.EntitySet;
+
+@Embeddable
 public class Products
+  extends EntitySet<Product>
 {
-  private String name;
+  @OneToMany
+  private Set<Product> products;
 
-  public String getName() {
-    return defaultIfBlank(name, "products");
+  @Override
+  protected Set<Product> data() {
+    return products;
+  }
+
+  @Override
+  protected void data(final Set<Product> products) {
+    this.products = products;
   }
 }

@@ -1,4 +1,4 @@
-package com.goeckeler.bootcamp.domain.products.object;
+package com.goeckeler.bootcamp.domain.artists.object;
 
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 
@@ -6,25 +6,27 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Index;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="products")
-public class Product  implements Comparable<Product>
-
+@Table(name = "artists", indexes = { @Index(name = "artists_name_index", columnList = "name", unique = false)
+})
+public class Artist
+  implements Comparable<Artist>
 {
   @Id
   @GeneratedValue
   private Long id;
 
-  @Column
+  @Column(length = 80)
   private String name;
 
-  public Product() {
+  public Artist() {
     this(null);
   }
 
-  public Product(String name) {
+  public Artist(String name) {
     this.name = name;
   }
 
@@ -34,7 +36,7 @@ public class Product  implements Comparable<Product>
   }
 
   public String getName() {
-    return defaultIfBlank(name, "(n/a)");
+    return defaultIfBlank(name, "Anonymous");
   }
 
   public void setName(final String name) {
@@ -48,12 +50,12 @@ public class Product  implements Comparable<Product>
 
     if (!getClass().isAssignableFrom(other.getClass())) return false;
 
-    Product that = (Product) other;
+    Artist that = (Artist) other;
     return this.toString().equals(that.toString());
   }
 
   @Override
-  public int compareTo(Product that) {
+  public int compareTo(Artist that) {
     if (that == null) return 1;
     if (this == that) return 0;
     return getName().compareToIgnoreCase(that.getName());
