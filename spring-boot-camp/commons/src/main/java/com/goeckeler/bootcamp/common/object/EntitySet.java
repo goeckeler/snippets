@@ -58,12 +58,17 @@ public abstract class EntitySet<T>
     return set().contains(item);
   }
   
-  public void clear() {
+  public final void clear() {
     set().clear();
   }
   
-  public boolean addAll(final Collection<T> collection) {
+  public final boolean addAll(final Collection<T> collection) {
     return set().addAll(collection);
+  }
+  
+  public final void forAll(final Iterable<T> collection) {
+    this.clear();
+    collection.forEach(item -> this.add(item));
   }
   
   @Override
