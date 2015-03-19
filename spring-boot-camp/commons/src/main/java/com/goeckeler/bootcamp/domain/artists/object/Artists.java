@@ -11,6 +11,8 @@ import com.goeckeler.bootcamp.common.object.EntitySet;
 public class Artists
   extends EntitySet<Artist>
 {
+  private static final long serialVersionUID = -7132276265148956631L;
+
   @ManyToMany
   private Set<Artist> artists;
 

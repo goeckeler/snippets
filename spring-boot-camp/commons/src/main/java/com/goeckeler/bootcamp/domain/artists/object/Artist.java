@@ -2,6 +2,8 @@ package com.goeckeler.bootcamp.domain.artists.object;
 
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,8 +15,10 @@ import javax.persistence.Table;
 @Table(name = "artists", indexes = { @Index(name = "artists_name_index", columnList = "name", unique = false)
 })
 public class Artist
-  implements Comparable<Artist>
+  implements Comparable<Artist>, Serializable
 {
+  private static final long serialVersionUID = 952914908735352548L;
+
   @Id
   @GeneratedValue
   private Long id;
@@ -29,11 +33,11 @@ public class Artist
   public Artist(String name) {
     this.name = name;
   }
-  
+
   public Long getId() {
     return id;
   }
-  
+
   public String getName() {
     return defaultIfBlank(name, "Anonymous");
   }

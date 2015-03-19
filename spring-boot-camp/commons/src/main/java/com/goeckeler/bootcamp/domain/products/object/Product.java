@@ -2,6 +2,7 @@ package com.goeckeler.bootcamp.domain.products.object;
 
 import static org.apache.commons.lang3.StringUtils.defaultIfBlank;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import javax.persistence.Column;
@@ -17,8 +18,10 @@ import com.goeckeler.bootcamp.domain.artists.object.Artists;
 @Entity
 @Table(name = "products")
 public class Product
-  implements Comparable<Product>
+  implements Comparable<Product>, Serializable
 {
+  private static final long serialVersionUID = -6688837651949227501L;
+
   @Id
   @GeneratedValue
   private Long id;
@@ -60,7 +63,7 @@ public class Product
   public Artists getArtists() {
     return artists;
   }
-  
+
   @Override
   public int hashCode() {
     return toString().hashCode();
