@@ -46,6 +46,6 @@ public class SearchProductsServiceTest
 
     assertNotNull(products);
     assertThat(products.size(), equalTo(1));
-    assertTrue(products.all().stream().allMatch(p -> p.getName().equalsIgnoreCase("funhouse")));
+    assertTrue(products.get().stream().allMatch(p -> p.getName().equalsIgnoreCase("funhouse")));
   }
 }

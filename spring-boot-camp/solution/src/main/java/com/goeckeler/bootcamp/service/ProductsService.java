@@ -32,7 +32,7 @@ public class ProductsService
     
     Iterable<Product> allProducts = productRepository.findAll();
     allProducts.forEach(p -> {
-      if (p.getArtists().all().stream().anyMatch(n -> containsIgnoreCase(n.getName(), defaultString(artistName)))) {
+      if (p.getArtists().get().stream().anyMatch(n -> containsIgnoreCase(n.getName(), defaultString(artistName)))) {
         products.add(p);
       }
     });
