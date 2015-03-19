@@ -73,6 +73,10 @@ public abstract class EntitySet<T>
   
   @Override
   public String toString() {
-    return StringUtils.join(set(), ", ");
+    return StringUtils.join(set(), delimiter());
+  }
+  
+  protected String delimiter() {
+    return ", ";
   }
 }
