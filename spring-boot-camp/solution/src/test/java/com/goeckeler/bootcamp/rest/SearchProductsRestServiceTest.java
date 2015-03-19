@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -23,6 +24,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 @IfProfileValue(name = "junit.stage", values = {
   "system", "integration"
 })
+@Ignore("Runs only if the controller has no further dependencies")
 public class SearchProductsRestServiceTest
 {
   private MockMvc mvc;
@@ -46,7 +48,7 @@ public class SearchProductsRestServiceTest
   public void shouldReturnOneProduct()
     throws Exception
   {
-    mvc.perform(MockMvcRequestBuilders.get("/products/search?artist-name=pink").accept(MediaType.APPLICATION_JSON)).andExpect(
-        status().isOk()).andExpect(content().string(equalTo("{name=Party}")));
+    mvc.perform(MockMvcRequestBuilders.get("/products/search?artist-name=p!nk").accept(MediaType.APPLICATION_JSON)).andExpect(
+        status().isOk()).andExpect(content().string(equalTo("{name=Funhouse}")));
   }
 }

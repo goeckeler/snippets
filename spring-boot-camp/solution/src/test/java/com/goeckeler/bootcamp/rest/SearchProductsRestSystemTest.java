@@ -25,7 +25,7 @@ import com.goeckeler.bootcamp.Application;
 @WebAppConfiguration
 @IntegrationTest({ "server.port=0"
 })
-@IfProfileValue(name="junit.stage", value="system")
+@IfProfileValue(name = "junit.stage", value = "system")
 public class SearchProductsRestSystemTest
 {
   @Value("${local.server.port}")
@@ -38,7 +38,7 @@ public class SearchProductsRestSystemTest
   public void setUp()
     throws Exception
   {
-    this.base = new URL("http://localhost:" + port + "/products/search?artist-name=celine");
+    this.base = new URL("http://localhost:" + port + "/products");
     template = new TestRestTemplate();
   }
 
@@ -46,7 +46,16 @@ public class SearchProductsRestSystemTest
   public void shouldReturnNoResults()
     throws Exception
   {
-    ResponseEntity<String> response = template.getForEntity(base.toString(), String.class);
-    assertThat(response.getBody(), equalTo("{}"));
+    ResponseEntity<String> response =
+        template.getForEntity(base.toString() + "/search?artist-name=celine", String.class);
+    assertThat(response.getBody(), equalTo("{ products=\"\" }"));
+  }
+
+  @Test
+  public void shouldReturnOneProduct()
+    throws Exception
+  {
+    ResponseEntity<String> response = template.getForEntity(base.toString() + "/search?artist-name=p!nk", String.class);
+    assertThat(response.getBody().toString(), equalTo("{ products=\"Funhouse by P!nk\" }"));
   }
 }
