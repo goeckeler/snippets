@@ -1,5 +1,6 @@
 package com.goeckeler.bootcamp.common.object;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
@@ -13,14 +14,18 @@ import org.apache.commons.lang3.StringUtils;
  * @param <T> the entity type contained in the set.
  */
 public abstract class EntitySet<T>
+  implements Serializable
 {
+  private static final long serialVersionUID = 75329566937972162L;
+
   public EntitySet() {
     super();
   }
 
   protected abstract Set<T> data();
+
   protected abstract void data(final Set<T> set);
-  
+
   /**
    * Use for write access to the set of artists.
    * 
@@ -38,12 +43,12 @@ public abstract class EntitySet<T>
    * 
    * @return the current list of artists, never <code>null</code>
    */
-  public final Set<T> all() {
+  public final Set<T> get() {
     return SetUtils.unmodifiableSet(SetUtils.emptyIfNull(data()));
   }
 
   public final int size() {
-    return all().size();  
+    return get().size();
   }
 
   public final boolean add(T item) {
@@ -57,25 +62,25 @@ public abstract class EntitySet<T>
   public final boolean contains(T item) {
     return set().contains(item);
   }
-  
+
   public final void clear() {
     set().clear();
   }
-  
+
   public final boolean addAll(final Collection<T> collection) {
     return set().addAll(collection);
   }
-  
+
   public final void forAll(final Iterable<T> collection) {
     this.clear();
     collection.forEach(item -> this.add(item));
   }
-  
+
   @Override
   public String toString() {
     return StringUtils.join(set(), delimiter());
   }
-  
+
   protected String delimiter() {
     return ", ";
   }
