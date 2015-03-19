@@ -1,5 +1,6 @@
 package com.goeckeler.bootcamp;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,11 +12,16 @@ import com.goeckeler.bootcamp.service.boot.Catalog;
 @SpringBootApplication
 public class Application
 {
+  @Value("${bootcamp.sampling}")
+  private Boolean sampleData;
+
   @Bean
   @Transactional
   CommandLineRunner init(final Catalog catalog) {
     return (event) -> {
-      catalog.load();
+      if (sampleData) {
+        catalog.load();
+      }
     };
   }
 
