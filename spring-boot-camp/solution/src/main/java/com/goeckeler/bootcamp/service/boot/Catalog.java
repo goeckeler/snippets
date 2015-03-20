@@ -67,8 +67,10 @@ public class Catalog
     }
 
     artistNames.forEach(name -> {
-      Artist artist = new Artist(name);
-      artist = artistDao.save(artist);
+      Artist artist = artistDao.findByNameIgnoreCase(name);
+      if (artist == null) {
+        artist = artistDao.save(new Artist(name));
+      }
       artists.add(artist);
     });
   }
@@ -76,11 +78,15 @@ public class Catalog
   private void createProducts() {
     for (Entry<String, String> entry : catalog.entrySet()) {
       String name = entry.getKey();
-      Product product = new Product(name);
-      for (String artist : StringUtils.split(entry.getValue(), ",")) {
-        product.getArtists().add(artistFor(artist.trim()).get());
+
+      Product product = productDao.findByNameIgnoreCase(name);
+      if (product == null) {
+        product = new Product(name);
+        for (String artist : StringUtils.split(entry.getValue(), ",")) {
+          product.getArtists().add(artistFor(artist.trim()).get());
+        }
+        product = productDao.save(product);
       }
-      product = productDao.save(product);
       products.add(product);
     };
   }
