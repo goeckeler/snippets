@@ -9,4 +9,5 @@ import com.goeckeler.bootcamp.domain.products.object.Product;
  */
 public interface ProductRepository extends CrudRepository<Product, Long>
 {
+  Product findByNameIgnoreCase(String productName);
 }
