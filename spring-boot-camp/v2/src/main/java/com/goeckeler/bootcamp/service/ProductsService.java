@@ -33,7 +33,7 @@ public class ProductsService
     // works, but doesn't it look ugly?
     Iterable<Product> allProducts = productRepository.findAll();
     allProducts.forEach(p -> {
-      if (p.getArtists().get().stream().anyMatch(n -> containsIgnoreCase(n.getName(), defaultString(artistName)))) {
+      if (p.getArtists().getItems().stream().anyMatch(n -> containsIgnoreCase(n.getName(), defaultString(artistName)))) {
         products.add(p);
       }
     });

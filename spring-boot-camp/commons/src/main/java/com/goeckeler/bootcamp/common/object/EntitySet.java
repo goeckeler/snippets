@@ -31,7 +31,7 @@ public abstract class EntitySet<T>
    * 
    * @return the list of artists, never <code>null</code>
    */
-  private Set<T> set() {
+  private Set<T> setItems() {
     if (data() == null) {
       data(new TreeSet<>());
     }
@@ -43,32 +43,32 @@ public abstract class EntitySet<T>
    * 
    * @return the current list of artists, never <code>null</code>
    */
-  public final Set<T> get() {
+  public final Set<T> getItems() {
     return SetUtils.unmodifiableSet(SetUtils.emptyIfNull(data()));
   }
 
   public final int size() {
-    return get().size();
+    return getItems().size();
   }
 
   public final boolean add(T item) {
-    return set().add(item);
+    return setItems().add(item);
   }
 
   public final boolean remove(T item) {
-    return set().remove(item);
+    return setItems().remove(item);
   }
 
   public final boolean contains(T item) {
-    return set().contains(item);
+    return setItems().contains(item);
   }
 
   public final void clear() {
-    set().clear();
+    setItems().clear();
   }
 
   public final boolean addAll(final Collection<T> collection) {
-    return set().addAll(collection);
+    return setItems().addAll(collection);
   }
 
   public final void forAll(final Iterable<T> collection) {
@@ -78,7 +78,7 @@ public abstract class EntitySet<T>
 
   @Override
   public String toString() {
-    return StringUtils.join(set(), delimiter());
+    return StringUtils.join(setItems(), delimiter());
   }
 
   protected String delimiter() {
