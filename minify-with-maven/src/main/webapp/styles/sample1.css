@@ -1,0 +1,20 @@
+/* title */
+H1 {
+	color: white;
+	background: gray;
+	FONT-FAMILY: arial, helvetica, lucida-sans, sans-serif;
+	FONT-SIZE: 18pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
+/* sub header */
+H2 {
+	COLOR: white;
+	background: gray;
+	FONT-FAMILY: lucida-sans, sans-serif;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	FONT-VARIANT: normal
+}
+
