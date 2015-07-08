@@ -1,7 +1,7 @@
 How to minify javascript and css file using maven plugin
 ===============================
 
-Sample application which shows how to minify javascript and css files using maven plugin.
+Sample application which shows how to minify javascript and css files using [maven plugin](http://samaxes.github.io/minify-maven-plugin/project-info.html).
 
 See [https://github.com/elitejavacoder/maven-minify-javascript-and-css](https://github.com/elitejavacoder/maven-minify-javascript-and-css) for original version using distinct files. This application uses embeded jetty server so use the following commands to build and run application.
 
