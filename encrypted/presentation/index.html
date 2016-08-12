@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Encrypt passwords in .properties files</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+			  <section data-markdown>
+          <script type="text/template">
+            # Encrypt passwords
+
+            Fast track to encrypt passwords in .properties files.
+
+            Thorsten G&ouml;ckeler, 2016
+          </script>
+        </section>
+				<section>
+				  Use <a href="http://www.jasypt.org/">http://www.jasypt.org/</a>
+
+          <pre>application.properties</pre>
+          <pre><code data-trim data-no-escape>
+secret = Ganz geheim
+          </code></pre>
+				</section>
+				<section>
+				  Encrypt property
+
+          <pre>Command Line</pre>
+          <pre><code data-trim data-no-escape>
+jasypt> encrypt input="Ganz geheim" password=demo
+
+...
+----OUTPUT----------------------
+TWBYTIAmzf5YGD5Omqg/054vq3Q6K3EV
+          </code></pre>
+
+          <pre>application.properties</pre>
+          <pre><code data-trim data-no-escape>
+secret = ENC(TWBYTIAmzf5YGD5Omqg/054vq3Q6K3EV)
+          </code></pre>
+				</section>
+				<section>
+  				<section>
+	  			  Use Spring Boot (1)
+
+            <pre>pom.xml</pre>
+            <pre><code data-trim data-no-escape>
+<dependency>
+  <groupId>com.github.ulisesbocchio</groupId>
+  <artifactId>jasypt-spring-boot-starter</artifactId>
+  <version>1.6</version>
+</dependency>
+            </code></pre>
+				  </section>
+				  <section>
+				    Use Spring Boot (2)
+
+            <pre>Spring Bean</pre>
+            <pre><code data-trim data-no-escape>
+@Value("${secret:none}")
+private String secret;
+            </code></pre>
+
+            <pre>Pass the master key</pre>
+            <pre><code data-trim data-no-escape>
+java -Djasypt.encryptor.password=demo ...
+java --jasypt.encryptor.password=demo ...
+            </code></pre>
+          </section>
+          <section>
+            <h2>There are other ways to pass the master key</h2>
+
+            <ol>
+              <li>Use an environment variable.</li>
+              <li>Pass in a different .properties file.</li>
+              <li>Decrypt it your own way.</li>
+            </ol>
+				  </section>
+				</section>
+        <section>
+  			  <section data-markdown>
+            <script type="text/template">
+              ## JaSypt & Spring Boot
+
+              ### Spring Boot Demo
+
+              [https://github.com/goeckeler/snippets/tree/master/encrypted](https://github.com/goeckeler/snippets/tree/master/encrypted)
+
+              ### Integration with Spring
+
+              [https://github.com/ulisesbocchio/jasypt-spring-boot](https://github.com/ulisesbocchio/jasypt-spring-boot)
+            </script>
+          </section>
+    		  <section data-markdown>
+            <script type="text/template">
+              ## Encryption with JaSypt
+
+              ### JaSypt
+
+              [http://www.jasypt.org/](http://www.jasypt.org/)
+
+              ### Integration with plain Java
+
+              [http://www.jasypt.org/encrypting-configuration.html](http://www.jasypt.org/encrypting-configuration.html)
+            </script>
+          </section>
+    		  <section data-markdown>
+            <script type="text/template">
+              ## Spring Boot Config Encryption
+
+              Alternatively, use Spring Cloud Config, just harder to set up.
+
+              [http://cloud.spring.io/spring-cloud-config/spring-cloud-config.html#_encryption_and_decryption](http://cloud.spring.io/spring-cloud-config/spring-cloud-config.html#_encryption_and_decryption)
+            </script>
+          </section>
+        </section>
+				<section><h1>ENC(hHMx1xdlMNlGLW3eQR/68g==)</h1></section>
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true }
+				]
+			});
+		</script>
+	</body>
+</html>
