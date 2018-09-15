@@ -1,0 +1,13 @@
+*.class
+hs_err_pid*
+/bin/
+
+/.classpath
+/.project
+/.gradle/
+/gradle/
+/jgiven-reports/
+/.settings/
+/.idea/
+/gradlew
+/gradlew.bat
