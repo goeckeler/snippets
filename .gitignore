@@ -230,3 +230,5 @@ pip-log.txt
 encrypted/.idea/
 
 *.iml
+
+integration-test-with-junit-and-spring/junit\.log\.2015-03-12
