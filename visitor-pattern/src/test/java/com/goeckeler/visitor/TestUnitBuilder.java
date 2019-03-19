@@ -12,7 +12,7 @@ class TestUnitBuilder
 {
 
   @Test
-  void testToUnit() {
+  void testSingleEmployee() {
     final Unit singleEmployee = UnitBuilder.unit().withEmployee("Adrian").toUnit();
     assertThat(singleEmployee.toString(), is("Adrian"));
   }
