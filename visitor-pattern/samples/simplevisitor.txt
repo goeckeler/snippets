@@ -1,0 +1,38 @@
+        class Tester {
+            public static void main(String[] args) {
+                Cheese cheese1 = new Wensleydale();
+                Cheese cheese2 = new Gouda();
+                Cheese cheese3 = new Brie();
+                Visitor v = new VisitorImpl();
+                cheese1.accept(v);
+                cheese2.accept(v);
+                cheese3.accept(v);
+            }
+        }
+        
+        interface Visitor {
+            void visit(Wensleydale w);
+            void visit(Gouda g);
+            void visit(Brie b);
+        }
+        
+        class VisitorImpl implements Visitor {
+            public void visit(Wensleydale w) { System.out.println(w.wensleydaleName()); }
+            public void visit(Gouda g) { System.out.println(g.goudaName()); }
+            public void visit(Brie b) { System.out.println(b.brieName()); }
+        }
+        
+        interface Cheese { void accept(Visitor v); }
+        abstract class BaseCheese implements Cheese { }
+        class Wensleydale extends BaseCheese {
+            String wensleydaleName() { return "This is wensleydale"; }
+            public void accept(Visitor v) { v.visit(this); }
+        }
+        class Gouda extends BaseCheese {
+            String goudaName() { return "This is gouda"; }
+            public void accept(Visitor v) { v.visit(this); }
+        }
+        class Brie extends BaseCheese {
+            String brieName() { return "This is brie"; }
+            public void accept(Visitor v) { v.visit(this); }
+        }
