@@ -4,8 +4,19 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>...</groupId>
-    <artifactId>...</artifactId>
+    <groupId>com.tngtech.jgiven</groupId>
+    <artifactId>jgiven-pacman-kata</artifactId>
+         
+    <properties>
+      <!-- default JDK version to be used -->
+      <jdk.version>11</jdk.version>
+      <!-- compiler setup -->
+      <source.jdk.version>${jdk.version}</source.jdk.version>
+      <target.jdk.version>${jdk.version}</target.jdk.version>
+      <!-- source file encoding for all files -->
+      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+         
     <version>1.0-SNAPSHOT</version>
     <dependencies>
         <dependency>
