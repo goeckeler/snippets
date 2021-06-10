@@ -14,6 +14,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        module: [ encrypted, jgiven-pacman-kata ]
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
@@ -27,8 +30,6 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
-    - name: Build encrpyted  
-      run: mvn -B package --file encrypted/pom.xml
-    - name: Build jgiven-pacman-kata
-      run: mvn -B package --file jgiven-pacman-kata/pom.xml
+    - name: Maven build ${{matrix.module}}  
+      run: mvn -B package --file ${{matrix.module}}/pom.xml
      
