@@ -17,7 +17,7 @@
     <commons.io.version>2.1</commons.io.version>
     <commons.lang.version>2.6</commons.lang.version>
 
-    <guava.version>27.0-jre</guava.version>
+    <guava.version>29.0-jre</guava.version>
     <joda.version>2.3</joda.version>
     <junit.version>4.13.1</junit.version>
 
