@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        module: [ encrypted, jgiven-pacman-kata ]
+        module: [ encrypted, integration-test-with-junit-and-spring, jgiven-pacman-kata, minify-with-maven, visitor-pattern ]
     steps:
     - uses: actions/checkout@v2
     - name: Set up JDK 11
