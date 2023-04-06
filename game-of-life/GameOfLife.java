@@ -8,7 +8,7 @@ import java.util.Scanner;
  * Modified	        20.3.2020, Silke Lechner-Greite
  */
 public class GameOfLife {
-    private static String[] line = {
+    private static String[] LINE = {
         ".X.",
         ".X.",
         ".X."
@@ -98,7 +98,7 @@ public class GameOfLife {
     public static void main(String[] args) {
 
         // world consists of 10 x 10 elements
-        boolean[][] cells = randomGeneration();
+        boolean[][] cells = presetGeneration(LINE);
 
         // print out first generation
         System.out.println("Generation #1");
@@ -130,4 +130,14 @@ public class GameOfLife {
          
          return cells;
     }
+
+    private static boolean[][] presetGeneration(String[] pattern) {
+        boolean[][] cells = new boolean[pattern.length][pattern[0].length()];
+        for (int row = 0; row < cells.length; ++row) {
+            for (int col = 0; col < cells[row].length; ++col) {
+                cells[row][col] = pattern[row].substring(col, col+1).equals("X");
+            }
+        }
+        return cells;
+   }
 }
