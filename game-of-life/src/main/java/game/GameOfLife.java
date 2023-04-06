@@ -10,7 +10,7 @@ import java.util.Scanner;
  * Modified	        20.3.2020, Silke Lechner-Greite
  */
 public class GameOfLife {
-    private static String[] LINE = {
+    static String[] LINE = {
         ".X.",
         ".X.",
         ".X."
@@ -20,7 +20,7 @@ public class GameOfLife {
      * prints living cells to console. Living cells are marked as "X", dead cells as "O".
      * @param c array of cells. True denotes living cells.
      */
-    private static void printCells(boolean[][] c) {
+    static void printCells(boolean[][] c) {
         if (c == null) {
             System.out.println("");
             return;
@@ -43,10 +43,10 @@ public class GameOfLife {
      * @param y column of considered cell
      * @return number of living cells that are neighbors to cell c[x][y]
      */
-    private static int countLivingNeighbors(boolean[][] c, int x, int y) {
+    static int countLivingNeighbors(boolean[][] c, int x, int y) {
         int alive = 0;
-        for (int row = Math.max(0, x-1); row < Math.min(c.length, x+1); ++row) {
-          for (int col = Math.max(0, y-1); col < Math.min(c[row].length, y+1); ++col) {
+        for (int row = Math.max(0, x-1); row < Math.min(c.length, x+2); ++row) {
+          for (int col = Math.max(0, y-1); col < Math.min(c[row].length, y+2); ++col) {
             if (row == x && col == y) continue;
             alive += c[row][col] ? 1 : 0;
           }
@@ -60,7 +60,7 @@ public class GameOfLife {
      * @param cells current generation: 2-dimensional boolean array of cells (true means that cell is alife)
      * @return next generation, same representation as 2-dimensional array of cells
      */
-    private static boolean[][] computeNextGenCells(boolean[][] cells) {
+    static boolean[][] computeNextGenCells(boolean[][] cells) {
         // there are three options, a final flat world, a folded world, and an endless world
         // to keep this very simple we assume a final flat world like an island
        
@@ -133,7 +133,7 @@ public class GameOfLife {
          return cells;
     }
 
-    private static boolean[][] presetGeneration(String[] pattern) {
+    public static boolean[][] presetGeneration(String[] pattern) {
         boolean[][] cells = new boolean[pattern.length][pattern[0].length()];
         for (int row = 0; row < cells.length; ++row) {
             for (int col = 0; col < cells[row].length; ++col) {
