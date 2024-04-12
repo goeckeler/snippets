@@ -1,26 +1,27 @@
 package com.goeckeler;
 
-import org.junit.AfterClass;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
-import org.springframework.boot.test.SpringApplicationConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@SpringApplicationConfiguration(classes = EncryptedApplication.class)
-public class EncryptedApplicationTests {
-    @BeforeClass
-    public static void setup() {
-        System.setProperty("jasypt.encryptor.password", "junit");
-    }
+@RunWith(SpringRunner.class)
+@ContextConfiguration(classes = EncryptedApplication.class)
+public class EncryptedApplicationTests
+{
+  @BeforeAll
+  public static void setup() {
+    System.setProperty("jasypt.encryptor.password", "junit");
+    System.out.println("Running test with jasypt password 'junit'.");
+  }
 
-    @AfterClass
-    public static void tearDown() {
-        System.clearProperty("secret");
-    }
+  @AfterAll
+  public static void tearDown() {
+    System.clearProperty("secret");
+  }
 
-    @Test
-    public void contextLoads() {
-    }
+  @Test
+  public void contextLoads() {
+    System.out.println("Spring context was loaded.");
+  }
 }
