@@ -16,6 +16,36 @@ public class GameOfLife {
         ".X."
     };
 
+    static String[] BLOCK = {
+        "....",
+        ".XX.",
+        ".XX.",
+        "...."
+    };
+
+    static String[] GLIDER = {
+        ".X..................",
+        "..X.................",
+        "XXX.................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "..X.................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "....................",
+        "...................."
+    };
+
     /**
      * prints living cells to console. Living cells are marked as "X", dead cells as "O".
      * @param c array of cells. True denotes living cells.
@@ -100,7 +130,7 @@ public class GameOfLife {
     public static void main(String[] args) {
 
         // world consists of 10 x 10 elements
-        boolean[][] cells = presetGeneration(LINE);
+        boolean[][] cells = presetGeneration(GLIDER);
 
         // print out first generation
         System.out.println("Generation #1");
