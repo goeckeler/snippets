@@ -9,7 +9,7 @@
          
     <properties>
       <!-- default JDK version to be used -->
-      <jdk.version>11</jdk.version>
+      <jdk.version>17</jdk.version>
       <!-- compiler setup -->
       <source.jdk.version>${jdk.version}</source.jdk.version>
       <target.jdk.version>${jdk.version}</target.jdk.version>
