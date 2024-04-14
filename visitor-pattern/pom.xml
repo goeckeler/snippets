@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
@@ -19,24 +20,24 @@
   <!-- Global settings -->
   <properties>
     <!-- default JDK version to be used -->
-    <jdk.version>1.8</jdk.version>
-    <!-- compiler setup -->
-    <source.jdk.version>${jdk.version}</source.jdk.version>
-    <target.jdk.version>${jdk.version}</target.jdk.version>
+    <java.version>21</java.version>
     <!-- source file encoding for all files -->
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
-    <!-- ************************************************************************ -->
+    <!--
+    ************************************************************************ -->
     <!-- VERSIONS, SORTED ALPHABETICALLY -->
-    <!-- ************************************************************************ -->
-    <commons.lang.version>3.8.1</commons.lang.version>
-    <commons.collections.version>4.3</commons.collections.version>
-    <junit.version>5.4.1</junit.version>
-    <junit.hamcrest.version>2.1</junit.hamcrest.version>
+    <!--
+    ************************************************************************ -->
+    <commons.lang.version>3.14.0</commons.lang.version>
+    <commons.collections.version>4.5.0-M1</commons.collections.version>
+    <junit.version>5.10.2</junit.version>
+    <junit.hamcrest.version>2.2</junit.hamcrest.version>
   </properties>
 
   <build>
-    <!-- most common used command to run maven, so you can just hit "mvn" instead of "mvn clean install" -->
+    <!-- most common used command to run maven, so you can just hit "mvn"
+    instead of "mvn clean install" -->
     <defaultGoal>clean install</defaultGoal>
 
     <plugins>
@@ -44,16 +45,28 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>3.8.0</version>
+        <version>3.13.0</version>
         <configuration>
-          <source>${source.jdk.version}</source>
-          <target>${target.jdk.version}</target>
+          <verbose>true</verbose>
+          <fork>true</fork>
+          <executable>${JAVA_HOME}/bin/javac</executable>
+          <compilerVersion>${java.version}</compilerVersion>
+
+          <source>${java.version}</source>
+          <target>${java.version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
         </configuration>
       </plugin>
 
       <plugin>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.1</version>
+      </plugin>
+
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>versions-maven-plugin</artifactId>
+        <version>2.16.2</version>
       </plugin>
     </plugins>
   </build>
