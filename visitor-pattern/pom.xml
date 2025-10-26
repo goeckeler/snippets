@@ -29,7 +29,7 @@
     <!-- VERSIONS, SORTED ALPHABETICALLY -->
     <!--
     ************************************************************************ -->
-    <commons.lang.version>3.14.0</commons.lang.version>
+    <commons.lang.version>3.18.0</commons.lang.version>
     <commons.collections.version>4.5.0-M1</commons.collections.version>
     <junit.version>5.10.2</junit.version>
     <junit.hamcrest.version>2.2</junit.hamcrest.version>
