@@ -20,6 +20,7 @@ jobs:
         uses: actions/checkout@v6
       - name: Make ${{matrix.module}}
         run: make
+        working-directory: ${{ matrix.module }}
       - uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.module }}
