@@ -18,7 +18,7 @@ jobs:
         module: [game-of-life]
 
     steps:
-      - name: Checkout sources
+      - name: Checkout sources for ${{matrix.module}}
         uses: actions/checkout@v6
 
       - name: Set up JDK 21
@@ -31,9 +31,9 @@ jobs:
         uses: gradle/actions/setup-gradle@v5
 
       - name: Allow Gradle
-        run: chmod +x  ${{ matrix.module }/gradlew
+        run: chmod +x  ${{ matrix.module }}/gradlew
         continue-on-error: true
 
-      - name: Build with Gradle
+      - name: Gradle build ${{matrix.module}}
         run: ./gradlew build
         working-directory: ${{ matrix.module }
