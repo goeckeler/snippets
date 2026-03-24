@@ -1,27 +1,26 @@
 # This workflow will build all C/C++ project with make
 
-name: Build all C/C++ snippets
+name: Build C/C++ snippets
 
 on:
   push:
-    branches: [ $default-branch ]
+    branches: [$default-branch]
   pull_request:
-    branches: [ $default-branch ]
+    branches: [$default-branch]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
-        module: [ segment ]
+        module: [segment]
     steps:
-    - uses: actions/checkout@v6    
-    - name: make
-      run: make
-    - uses: actions/upload-artifact@v3
-      with:
-        name: ${{ matrix.module }}
-        path: ${{ matrix.module }}
-
+      - name: Checkout sources for ${{matrix.module}}
+        uses: actions/checkout@v6
+      - name: Make ${{matrix.module}}
+        run: make
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ matrix.module }}
+          path: ${{ matrix.module }}
