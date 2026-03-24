@@ -28,12 +28,10 @@ jobs:
           distribution: "temurin"
 
       - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v5
-
-      - name: Allow Gradle
-        run: chmod +x  ${{ matrix.module }}/gradlew
-        continue-on-error: true
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          build-root-directory: ${{matrix.module}}
 
       - name: Gradle build ${{matrix.module}}
-        run: ./gradlew build
-        working-directory: ${{ matrix.module }}
+        run: gradle build
+        working-directory: ${{matrix.module}}

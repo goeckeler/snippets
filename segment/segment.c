@@ -6,75 +6,75 @@
 // number of dots needed from top to bottom row
 const int dots = 5;
 
-// digits as segments
+// digits as segments using ASCII box-drawing chars
 const char* segments[10][5] = {
     // 0
-    {"***",
-     "* *",
-     "* *",
-     "* *",
-     "***"},
+    {"┌─┐",
+     "│ │",
+     "│ │",
+     "│ │",
+     "└─┘"},
     // 1
-    {"** ",
-     " * ",
-     " * ",
-     " * ",
-     "***"},
+    {"  ┐",
+     "  │",
+     "  │",
+     "  │",
+     "  ┴"},
     // 2
-    {"***",
-     "  *",
-     "***",
-     "*  ",
-     "***"},
+    {"┌─┐",
+     "  │",
+     "┌─┘",
+     "│  ",
+     "└─┘"},
     // 3
-    {"***",
-     "  *",
-     " **",
-     "  *",
-     "***"},
+    {"┌─┐",
+     "  │",
+     " ─┤",
+     "  │",
+     "└─┘"},
     // 4
-    {"*  ",
-     "* *",
-     "***",
-     "  *",
-     "  *"},
+    {"│  ",
+     "│ │",
+     "└─┤",
+     "  │",
+     "  ┴"},
     // 5
-    {"***",
-     "*  ",
-     "***",
-     "  *",
-     "***"},
+    {"┌─┐",
+     "│  ",
+     "└─┐",
+     "  │",
+     "└─┘"},
     // 6
-    {"***",
-     "*  ",
-     "***",
-     "* *",
-     "***"},
+    {"┌─┐",
+     "│  ",
+     "├─┐",
+     "│ │",
+     "└─┘"},
     // 7
-    {"***",
-     "  *",
-     " **",
-     "  *",
-     "  *"},
+    {"┌─┐",
+     "  │",
+     "  │",
+     "  │",
+     "  │"},
     // 8
-    {"***",
-     "* *",
-     "***",
-     "* *",
-     "***"},
+    {"┌─┐",
+     "│ │",
+     "├─┤",
+     "│ │",
+     "└─┘"},
     // 9
-    {"***",
-     "* *",
-     "***",
-     "  *",
-     "***"}
+    {"┌─┐",
+     "│ │",
+     "└─┤",
+     "  │",
+     "└─┘"}
 };
 
 // minus sign
 const char* minus_sign[5] = {
     "   ",
     "   ",
-    "***",
+    "───",
     "   ",
     "   "
 };
@@ -89,7 +89,7 @@ void print_number(long long integer) {
 
     long digits = (integer == 0 ? 1 : ceil(log10(llabs(integer))));
     char number[digits];
-    int length, start = 0;
+    int length = 0;
 
     // we will scan the complete number and then print it row by row, thus we need a stringified version of the integer
     sprintf(number, "%lld", integer);
