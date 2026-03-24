@@ -5,9 +5,9 @@ name: Build Java snippets with Gradle
 
 on:
   push:
-    branches: [$default-branch]
+    branches: [ $default-branch ]
   pull_request:
-    branches: [$default-branch]
+    branches: [ $default-branch ]
 
 jobs:
   build:
@@ -15,10 +15,10 @@ jobs:
 
     strategy:
       matrix:
-        module: [game-of-life]
+        module: [ game-of-life ]
 
     steps:
-      - name: Checkout sources for ${{matrix.module}}
+      - name: Checkout sources for ${{ matrix.module }}
         uses: actions/checkout@v6
 
       - name: Set up JDK 21
@@ -30,8 +30,8 @@ jobs:
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
-          build-root-directory: ${{matrix.module}}
+          build-root-directory: ${{ matrix.module }}
 
-      - name: Gradle build ${{matrix.module}}
+      - name: Gradle build ${{ matrix.module }}
         run: gradle build
-        working-directory: ${{matrix.module}}
+        working-directory: ${{ matrix.module }}
