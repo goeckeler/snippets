@@ -36,4 +36,4 @@ jobs:
 
       - name: Gradle build ${{matrix.module}}
         run: ./gradlew build
-        working-directory: ${{ matrix.module }
+        working-directory: ${{ matrix.module }}
