@@ -11,6 +11,6 @@ In this sample "integration" is used instead of "test" but as
 standard unit tests are executed anyway the first integration
 system is mostly the test server used by the team.
 
-*You'd better upgrade to JUnit 5 to have this feature right away.* 
+*You'd better upgrade to JUnit 5 or 6 to have this feature right away.* 
 
 
