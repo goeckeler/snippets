@@ -839,6 +839,7 @@ export default function( revealElement, options ) {
 				// Respect max/min scale settings
 				scale = Math.max( scale, config.minScale );
 				scale = Math.min( scale, config.maxScale );
+				scale = Math.round( scale * 100 ) / 100;
 
 				// Don't apply any scaling styles if scale is 1 or we're
 				// in the scroll view
@@ -859,31 +860,32 @@ export default function( revealElement, options ) {
 					transformSlides( { layout: 'translate(-50%, -50%) scale('+ scale +')' } );
 				}
 
-				// Select all slides, vertical and horizontal
-				const slides = Array.from( dom.wrapper.querySelectorAll( SLIDES_SELECTOR ) );
+				const visibleSlides = Array.from( dom.wrapper.querySelectorAll( SLIDES_SELECTOR ) )
+					.filter( slide => slide.style.display !== 'none' );
 
-				for( let i = 0, len = slides.length; i < len; i++ ) {
-					const slide = slides[ i ];
+				// Pass 1: read sizes of visible slides
+				const tops = new Array( visibleSlides.length );
+				for( let i = 0, len = visibleSlides.length; i < len; i++ ) {
+					const slide = visibleSlides[ i ];
 
-					// Don't bother updating invisible slides
-					if( slide.style.display === 'none' ) {
-						continue;
-					}
-
-					if( ( config.center || slide.classList.contains( 'center' ) ) ) {
+					if( config.center || slide.classList.contains( 'center' ) ) {
 						// Vertical stacks are not centred since their section
 						// children will be
 						if( slide.classList.contains( 'stack' ) ) {
-							slide.style.top = 0;
+							tops[ i ] = 0;
 						}
 						else {
-							slide.style.top = Math.max( ( size.height - slide.scrollHeight ) / 2, 0 ) + 'px';
+							tops[ i ] = Math.max( ( size.height - slide.scrollHeight ) / 2, 0 ) + 'px';
 						}
 					}
 					else {
-						slide.style.top = '';
+						tops[ i ] = '';
 					}
+				}
 
+				// Pass 2: write top values to visible slides
+				for( let i = 0, len = visibleSlides.length; i < len; i++ ) {
+					visibleSlides[ i ].style.top = tops[ i ];
 				}
 
 				if( oldScale !== scale ) {

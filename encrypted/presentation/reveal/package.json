@@ -102,6 +102,7 @@
 		"presentation"
 	],
 	"devDependencies": {
+		"esbuild": "^0.28.0",
 		"fitty": "^2.4.2",
 		"glob": "^13.0.6",
 		"highlight.js": "^11.11.1",

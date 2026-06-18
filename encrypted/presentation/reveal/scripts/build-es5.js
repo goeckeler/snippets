@@ -16,6 +16,8 @@ try {
 	const source = await readFile(inputPath, 'utf8');
 	const result = ts.transpileModule(source, {
 		compilerOptions: {
+			// This script intentionally emits a legacy ES5 UMD bundle.
+			ignoreDeprecations: '6.0',
 			target: ts.ScriptTarget.ES5,
 			module: ts.ModuleKind.UMD,
 			downlevelIteration: true,
